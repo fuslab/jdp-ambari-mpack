@@ -1,0 +1,58 @@
+<upgrade-config-changes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-config.xsd">
+    <services>
+        <service name="NIFI">
+            <component name="NIFI_MASTER">
+                <changes>
+                    <!-- Add these configs to nifi-properties. -->
+                    <definition xsi:type="configure" id="jdp_2_1_0_0_add_nifi_properties_configs">
+                        <type>nifi-properties</type>
+                        <set key="nifi.sensitive.props.additional.keys" value=""/>
+                        <set key="nifi.variable.registry.properties" value=""/>
+                    </definition>
+                    <!-- Add these configs to nifi-ambari-config. -->
+                    <definition xsi:type="configure" id="jdp_2_1_0_0_add_nifi_ambari_config_configs">
+                        <type>nifi-ambari-config</type>
+                        <set key="nifi.security.encrypt.configuration.password" value=""/>
+                    </definition>
+
+                    <!-- Update login identity providers -->
+                    <definition xsi:type="configure" id="jdp_3_0_0_0_update_login_identity_providers_configs">
+                        <type>nifi-login-identity-providers-env</type>
+                        <replace key="content" find="&lt;class&gt;org.apache.nifi.ldap.LdapProvider&lt;/class&gt;" replace-with="&lt;class&gt;org.apache.nifi.ldap.LdapProvider&lt;/class&gt;&lt;property name=&quot;Identity Strategy&quot;&gt;USE_DN&lt;/property&gt;"/>
+                    </definition>
+
+                    <!-- Update node logback configuration -->
+                    <definition xsi:type="configure" id="jdp_3_0_0_0_update_nifi_node_logback_configs">
+                        <type>nifi-node-logback-env</type>
+                        <replace key="content" find="&lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;" replace-with="&lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy&quot;&gt;"/>
+                        <replace key="content" find="&lt;timeBasedFileNamingAndTriggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;&gt;" replace-with=""/>
+                        <replace key="content" find="&lt;/timeBasedFileNamingAndTriggeringPolicy&gt;" replace-with=""/>
+                        <regex-replace key="content" find="&lt;immediateFlush&gt;(\w+)&lt;/immediateFlush&gt;" replace-with=""/>
+                        <replace key="content" find="&lt;encoder class=&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;&gt;" replace-with="&lt;immediateFlush&gt;true&lt;/immediateFlush&gt;&lt;encoder class=&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;&gt;"/>
+                        <replace key="content" find="&lt;/configuration&gt;" replace-with="&lt;logger name=&quot;org.apache.calcite.runtime.CalciteException&quot; level=&quot;OFF&quot;/&gt;&lt;/configuration&gt;"/>
+                    </definition>
+
+                    <!-- Update bootstrap config -->
+                    <definition xsi:type="configure" id="jdp_3_0_0_0_update_nifi_bootstrap_env_configs">
+                        <type>nifi-bootstrap-env</type>
+                        <insert key="content" value="{% if security_enabled %}" insert-type="append" newline-before="true" newline-after="true"/>
+                        <insert key="content" value="java.arg.0=-Djava.security.auth.login.config={{nifi_jaas_conf}}" insert-type="append" newline-after="true"/>
+                        <insert key="content" value="{% endif %}" insert-type="append" newline-after="true"/>
+                    </definition>
+
+                </changes>
+            </component>
+        </service>
+        <service name="ZOOKEEPER">
+            <component name="ZOOKEEPER_SERVER">
+                <changes>
+                    <!-- Update stack tools to use appropriate jdp conf selector -->
+                    <definition xsi:type="configure" id="jdp_3_0_0_0_update_cluster_env_configs">
+                        <type>cluster-env</type>
+                        <regex-replace key="stack_tools" find="&quot;conf_selector&quot;:(\s)*\[.+\]" replace-with="&quot;conf_selector&quot;:[&quot;jdpconf-select&quot;,&quot;/usr/bin/jdpconf-select&quot;,&quot;jdp-select&quot;]"/>
+                    </definition>
+                </changes>
+            </component>
+        </service>
+    </services>
+</upgrade-config-changes>
