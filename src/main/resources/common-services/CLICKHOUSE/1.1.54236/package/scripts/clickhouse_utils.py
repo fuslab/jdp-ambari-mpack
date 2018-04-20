@@ -224,11 +224,31 @@ def clickhouseMetrikaToXML(tcp_port, user, password, ck_hosts, zk_hosts,
 
         elif nameNode == 'zookeeper_connect':
             a = xdoc.createElement(zookeeper_servers)
-            i = 1
-            if i < len(zk_hosts):
+
+            if len(zk_hosts) > 1:
+
+                i = 1
+                if i < len(zk_hosts):
+                    for host in zk_hosts:
+                        b = xdoc.createElement('node')
+                        b.setAttribute('index', str(i))
+
+                        c = xdoc.createElement('host')
+                        cv = xdoc.createTextNode(host)
+                        c.appendChild(cv)
+                        b.appendChild(c)
+
+                        d = xdoc.createElement('port')
+                        dv = xdoc.createTextNode('2181')
+                        d.appendChild(dv)
+                        b.appendChild(d)
+
+                        a.appendChild(b)
+                        i = i + 1
+            else:
                 for host in zk_hosts:
                     b = xdoc.createElement('node')
-                    b.setAttribute('index', str(i))
+                    b.setAttribute('index', '1')
 
                     c = xdoc.createElement('host')
                     cv = xdoc.createTextNode(host)
@@ -241,7 +261,6 @@ def clickhouseMetrikaToXML(tcp_port, user, password, ck_hosts, zk_hosts,
                     b.appendChild(d)
 
                     a.appendChild(b)
-                    i = i + 1
 
             e.appendChild(a)
 
