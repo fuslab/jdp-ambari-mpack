@@ -20,7 +20,7 @@
     
     <os family="redhat6">
         <repo>
-            <baseurl>http://archive.jikelab.com/JDP/centos6/3.0.0.0</baseurl>
+            <baseurl>http://archive.jikelab.com/JDP/centos6/3.1.0.0</baseurl>
             <repoid>JDP-3.0</repoid>
             <reponame>JDP</reponame>
         </repo>
@@ -33,7 +33,7 @@
     
     <os family="redhat7">
         <repo>
-            <baseurl>http://archive.jikelab.com/JDP/centos7/3.0.0.0</baseurl>
+            <baseurl>http://archive.jikelab.com/JDP/centos7/3.1.0.0</baseurl>
             <repoid>JDP-3.0</repoid>
             <reponame>JDP</reponame>
         </repo>

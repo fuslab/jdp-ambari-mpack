@@ -20,14 +20,14 @@
 
   <property>
     <name>ranger.usersync.keystore.file</name>
-    <value>/usr/rdf/current/ranger-usersync/conf/unixauthservice.jks</value>
+    <value>/usr/jdp/current/ranger-usersync/conf/unixauthservice.jks</value>
     <description>Keystore file used for usersync</description>
     <on-ambari-upgrade add="true"/>
   </property>
 
   <property>
     <name>ranger.usersync.truststore.file</name>
-    <value>/usr/rdf/current/ranger-usersync/conf/mytruststore.jks</value>
+    <value>/usr/jdp/current/ranger-usersync/conf/mytruststore.jks</value>
     <description>Truststore used for usersync, required if usersync -&gt; ranger admin communication is SSL enabled</description>
     <on-ambari-upgrade add="true"/>
   </property>
@@ -35,7 +35,7 @@
   <property>
     <name>ranger.usersync.ldap.bindkeystore</name>
     <value></value>
-    <description>Set same value as ranger.usersync.keystore.file property i.e default value /usr/rdf/current/ranger-usersync/conf/ugsync.jceks</description>
+    <description>Set same value as ranger.usersync.keystore.file property i.e default value /usr/jdp/current/ranger-usersync/conf/ugsync.jceks</description>
     <value-attributes>
       <empty-value-valid>true</empty-value-valid>
     </value-attributes>
@@ -44,14 +44,14 @@
 
   <property>
     <name>ranger.usersync.credstore.filename</name>
-    <value>/usr/rdf/current/ranger-usersync/conf/ugsync.jceks</value>
+    <value>/usr/jdp/current/ranger-usersync/conf/ugsync.jceks</value>
     <description>Credential store file name for user sync, specify full path</description>
     <on-ambari-upgrade add="true"/>
   </property>
 
   <property>
     <name>ranger.usersync.policymgr.keystore</name>
-    <value>/usr/rdf/current/ranger-usersync/conf/ugsync.jceks</value>
+    <value>/usr/jdp/current/ranger-usersync/conf/ugsync.jceks</value>
     <description></description>
     <on-ambari-upgrade add="true"/>
   </property>

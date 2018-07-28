@@ -76,7 +76,7 @@
   <property>
     <displayName>Jar Storage</displayName>
     <name>jar.storage</name>
-    <value>/rdf/streamline/jars</value>
+    <value>/jdp/streamline/jars</value>
     <description>
       Directory under which custom processor, UDF jars will be stored.
     </description>
@@ -84,7 +84,7 @@
   <property>
     <displayName>Topology Test Results Dir</displayName>
     <name>topology.test.results.dir</name>
-    <value>/rdf/streamline/topology_test_results</value>
+    <value>/jdp/streamline/topology_test_results</value>
     <description>
       Directory under which topology test results will be stored.
     </description>
@@ -92,7 +92,7 @@
   <property>
     <displayName>Storm Client Home</displayName>
     <name>storm.client.home</name>
-    <value>/usr/rdf/current/storm-client</value>
+    <value>/usr/jdp/current/storm-client</value>
     <description>
       Storm client home to deploy topologies.
     </description>

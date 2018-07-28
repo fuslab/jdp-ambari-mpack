@@ -1,13 +1,13 @@
-#### HDF Ambari Management Pack
+#### JDP Ambari Management Pack
 
-#### Install maven 3.0.5
+#### Install maven 3.3.9
 ```
-wget http://mirrors.gigenet.com/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
-su -c "tar -zxvf apache-maven-3.0.5-bin.tar.gz -C /opt/" 
-export M2_HOME=/opt/apache-maven-3.0.5
+wget http://mirrors.gigenet.com/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+su -c "tar -zxvf apache-maven-3.3.9-bin.tar.gz -C /opt/" 
+export M2_HOME=/opt/apache-maven-3.3.9
 export M2=$M2_HOME/bin
 PATH=$M2:$PATH
-echo "export M2_HOME=/opt/apache-maven-3.0.5" >> ~/.bashrc
+echo "export M2_HOME=/opt/apache-maven-3.3.9" >> ~/.bashrc
 echo "export M2=$M2_HOME/bin" >> ~/.bashrc
 echo "PATH=$M2:$PATH" >> ~/.bashrc
 ```
@@ -29,12 +29,12 @@ mvn clean package -DminAmbariVersion=${MIN_AMBARI_VERSION} -DmaxAmbariVersion=${
 ##### Example:
 ```
 cd jdp_ambari_mp/jdp-ambari-mpack
-mvn versions:set -DnewVersion=0.1.0.0-1
+mvn versions:set -DnewVersion=0.1.0.0.3.1.0-108
 
-mvn clean package -DminAmbariVersion=2.4.0.0 -DmaxAmbariVersion=2.6.0.0  -Dnifiversion=1.2.0
+mvn clean package -DminAmbariVersion=2.4.0.0 -DmaxAmbariVersion=2.6.0.0  -Dnifiversion=1.7.0
 
 #this will build the below tarball
-ls -la target/jdp-ambari-mpack-0.1.0.0-1.tar.gz
+ls -la target/jdp-ambari-mpack-0.1.0.0.3.1.0-108.tar.gz
 ```
 
 #### Installation Instructions:
@@ -50,7 +50,7 @@ ambari-server install-mpack --mpack=/path/to/jdp-ambari-mpack-${JDP_MPACK_VERSIO
 ```
   - Example:
 ```
-ambari-server install-mpack --mpack=target/jdp-ambari-mpack-0.1.0.0-1.tar.gz --purge --verbose
+ambari-server install-mpack --mpack=target/jdp-ambari-mpack-0.1.0.0.3.1.0-108.tar.gz --purge --verbose
 ```
 - Start ambari-server
 ```

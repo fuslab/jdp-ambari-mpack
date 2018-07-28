@@ -21,7 +21,7 @@
 <configuration supports_final="true" xmlns:xi="http://www.w3.org/2001/XInclude">
   <property>
     <name>java.library.path</name>
-    <value>/usr/local/lib:/opt/local/lib:/usr/lib:/usr/rdf/current/storm-client/lib</value>
+    <value>/usr/local/lib:/opt/local/lib:/usr/lib:/usr/jdp/current/storm-client/lib</value>
     <description>This value is passed to spawned JVMs (e.g., Nimbus, Supervisor, and Workers)
       for the java.library.path value. java.library.path tells the JVM where
       to look for native libraries. It is necessary to set this config correctly since
@@ -31,7 +31,7 @@
 
   <property>
     <name>nimbus.childopts</name>
-    <value>-Xmx1024m _JAAS_PLACEHOLDER -javaagent:/usr/rdf/current/storm-nimbus/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8649,wireformat31x=true,mode=multicast,config=/usr/rdf/current/storm-nimbus/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Nimbus_JVM</value>
+    <value>-Xmx1024m _JAAS_PLACEHOLDER -javaagent:/usr/jdp/current/storm-nimbus/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8649,wireformat31x=true,mode=multicast,config=/usr/jdp/current/storm-nimbus/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Nimbus_JVM</value>
     <description>This parameter is used by the storm-deploy project to configure the jvm options for the nimbus daemon.</description>
     <value-attributes>
       <overridable>false</overridable>
@@ -41,7 +41,7 @@
 
   <property>
     <name>worker.childopts</name>
-    <value>-Xmx768m _JAAS_PLACEHOLDER -javaagent:/usr/rdf/current/storm-client/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8650,wireformat31x=true,mode=multicast,config=/usr/rdf/current/storm-client/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Worker_%ID%_JVM</value>
+    <value>-Xmx768m _JAAS_PLACEHOLDER -javaagent:/usr/jdp/current/storm-client/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8650,wireformat31x=true,mode=multicast,config=/usr/jdp/current/storm-client/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Worker_%ID%_JVM</value>
     <description>The jvm opts provided to workers launched by this supervisor. All \"%ID%\" substrings are replaced with an identifier for this worker.</description>
     <value-attributes>
       <type>multiLine</type>
@@ -51,7 +51,7 @@
 
   <property>
     <name>supervisor.childopts</name>
-    <value>-Xmx256m _JAAS_PLACEHOLDER -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port={{jmxremote_port}} -javaagent:/usr/rdf/current/storm-supervisor/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8650,wireformat31x=true,mode=multicast,config=/usr/rdf/current/storm-supervisor/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Supervisor_JVM</value>
+    <value>-Xmx256m _JAAS_PLACEHOLDER -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port={{jmxremote_port}} -javaagent:/usr/jdp/current/storm-supervisor/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8650,wireformat31x=true,mode=multicast,config=/usr/jdp/current/storm-supervisor/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Supervisor_JVM</value>
     <description>This parameter is used by the storm-deploy project to configure the jvm options for the supervisor daemon.</description>
     <value-attributes>
       <overridable>false</overridable>

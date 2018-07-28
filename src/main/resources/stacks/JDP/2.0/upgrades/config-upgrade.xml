@@ -47,7 +47,7 @@
             <component name="ZOOKEEPER_SERVER">
                 <changes>
                     <!-- Update stack tools to use appropriate jdp conf selector -->
-                    <definition xsi:type="configure" id="jdp_3_0_0_0_update_cluster_env_configs">
+                    <definition xsi:type="configure" id="jdp_3_1_0_0_update_cluster_env_configs">
                         <type>cluster-env</type>
                         <regex-replace key="stack_tools" find="&quot;conf_selector&quot;:(\s)*\[.+\]" replace-with="&quot;conf_selector&quot;:[&quot;jdpconf-select&quot;,&quot;/usr/bin/jdpconf-select&quot;,&quot;jdp-select&quot;]"/>
                     </definition>

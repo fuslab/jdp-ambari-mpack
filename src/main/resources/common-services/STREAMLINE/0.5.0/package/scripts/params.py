@@ -46,7 +46,7 @@ stack_root = Script.get_stack_root()
 stack_name = default("/hostLevelParams/stack_name", None)
 if stack_name == "HDP":
   # Override HDP stack root
-  stack_root = "/usr/rdf"
+  stack_root = "/usr/jdp"
 retryAble = default("/commandParams/command_retry_enabled", False)
 
 # Version being upgraded/downgraded to
@@ -151,7 +151,7 @@ if jar_storage_type != None and jar_storage_type == "hdfs":
 if 'topology.test.results.dir' in config['configurations']['streamline-common']:
   topology_test_results = config['configurations']['streamline-common']['topology.test.results.dir']
 else:
-  topology_test_results = "/rdf/streamline/topology_test_results"
+  topology_test_results = "/jdp/streamline/topology_test_results"
 
 streamline_dashboard_url = config['configurations']['streamline-common']['streamline.dashboard.url']
 

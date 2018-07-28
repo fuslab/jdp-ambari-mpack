@@ -42,9 +42,9 @@ stack_name = default("/hostLevelParams/stack_name", None)
 stack_version_buildnum = default("/commandParams/version", None)
 if stack_name == "HDP":
   # Override HDP stack root
-  stack_root = "/usr/rdf"
+  stack_root = "/usr/jdp"
   # Override HDP stack version
-  stack_version_buildnum = get_component_version_with_stack_selector("/usr/bin/rdf-select", "nifi")
+  stack_version_buildnum = get_component_version_with_stack_selector("/usr/bin/jdp-select", "nifi")
 elif not stack_version_buildnum and stack_name:
   stack_version_buildnum = get_component_version(stack_name, "nifi")
 

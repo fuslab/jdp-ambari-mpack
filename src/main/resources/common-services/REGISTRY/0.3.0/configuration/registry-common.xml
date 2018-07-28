@@ -73,7 +73,7 @@
   </property>
   <property>
     <name>jar.storage</name>
-    <value>/rdf/registry</value>
+    <value>/jdp/registry</value>
     <description>
       Directory under which serializers/deserializers will be stored.
     </description>
